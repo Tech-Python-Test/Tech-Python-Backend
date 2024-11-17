@@ -19,7 +19,7 @@ def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
 
     # Crear nuevo usuario
     hashed_password = get_password_hash(user_data.password)
-    user = User(name=user_data.name, email=user_data.email, hashed_password=hashed_password)
+    user = User(fname=user_data.fname, lname=user_data.lname, email=user_data.email, hashed_password=hashed_password)
     db.add(user)
     db.commit()
     db.refresh(user)
@@ -57,8 +57,14 @@ def update_user_profile(user_id: int, user_data: UserUpdate, db: Session = Depen
         raise HTTPException(status_code=404, detail="User not found")
 
     # Actualizar los campos si están presentes en los datos de entrada
-    if user_data.name is not None:
-        user.name = user_data.name
+    if user_data.fname is not None:
+        user.fname = user_data.fname
+    if user_data.lname is not None:
+        user.lname = user_data.lname
+    if user_data.phone is not None:
+        user.phone = user_data.phone
+    if user_data.location is not None:
+        user.location =user_data.location
     if user_data.profile_picture is not None:
         user.profile_picture = str(user_data.profile_picture)
     if user_data.interests is not None:
