@@ -12,13 +12,12 @@ class Event(Base):
     description = Column(Text, nullable=False)
     location = Column(String, nullable=False)
     datetime = Column(DateTime, nullable=False)
-    image_url = Column(String, nullable=True)
     additional_material = Column(Text, nullable=True)
 
     # Relación con el usuario que creó el evento
     organizer_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     organizer = relationship("User", back_populates="organized_events")
-
+    
     # Relación con los usuarios asistentes al evento
     users = relationship(
         "User",

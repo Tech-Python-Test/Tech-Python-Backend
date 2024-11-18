@@ -9,14 +9,22 @@ class EventBase(BaseModel):
     datetime: datetime
 
 class EventCreate(EventBase):
-    image_url: Optional[HttpUrl] = None
     additional_material: Optional[str] = None
 
 class EventResponse(EventBase):
     id: int
-    image_url: Optional[HttpUrl] = None
     additional_material: Optional[str] = None
     organizer_id: int
+
+    class Config:
+        orm_mode = True
+
+class EventUpdate(BaseModel):
+    title: Optional[str]
+    description: Optional[str]
+    datetime: Optional[datetime]
+    location: Optional[str]
+    additional_material: Optional[str]
 
     class Config:
         orm_mode = True
