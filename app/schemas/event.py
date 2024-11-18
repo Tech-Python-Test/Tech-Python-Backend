@@ -13,6 +13,7 @@ class EventCreate(EventBase):
 
 class EventResponse(EventBase):
     id: int
+    datetime: datetime
     additional_material: Optional[str] = None
     organizer_id: int
 
