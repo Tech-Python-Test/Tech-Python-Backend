@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import user, conversation, message, group, event
+from app.routers import user, conversation, message, group, event, characteristic
 from app.database.connection import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -15,6 +15,7 @@ app.include_router(conversation.router)
 app.include_router(message.router)
 app.include_router(group.router)
 app.include_router(event.router)
+app.include_router(characteristic.router)
 
 app.add_middleware(
     CORSMiddleware,

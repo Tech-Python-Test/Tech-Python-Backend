@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from app.database.connection import Base
-from app.models.user_conversations import user_events
+from app.models.relationship import user_events, characteristic_events
 import datetime
 
 class Event(Base):
@@ -25,3 +25,4 @@ class Event(Base):
         secondary=user_events,
         back_populates="events"
     )
+    characteristics = relationship("Characteristic", secondary=characteristic_events, back_populates="events")

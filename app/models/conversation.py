@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from app.database.connection import Base
 from app.models.user import User
-from app.models.user_conversations import user_conversations
+from app.models.relationship import user_conversations
 
 class Conversation(Base):
     __tablename__ = "conversations"

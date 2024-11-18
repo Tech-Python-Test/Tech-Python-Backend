@@ -14,3 +14,10 @@ user_events = Table(
     Column("user_id", Integer, ForeignKey("users.id"), primary_key=True),
     Column("event_id", Integer, ForeignKey("events.id"), primary_key=True),
 )
+
+characteristic_events = Table(
+    "characteristics_events", 
+    Base.metadata,
+    Column("characteristics_id", Integer, ForeignKey("characteristics.id"), primary_key=True),
+    Column("event_id", Integer, ForeignKey("events.id"), primary_key=True),
+)
